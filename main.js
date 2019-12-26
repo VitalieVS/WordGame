@@ -19,15 +19,21 @@ function clearField(div, description, startG) {
 }
 
 function timerStart(){
-    document.write('<div id="timer">'+time+'</div>');
     let time = 0;
+    document.write('<div id="timer">'+time+'</div>');
     let startTimer = setInterval(function () {
         time += 1;
+        textModify(time);
         if (time >= 3){
             clearInterval(startTimer);
             timerControl();
         }
     }, 1000)
+}
+
+function textModify(time){
+    let timer = document.getElementById("timer");
+    timer.innerHTML = time;
 }
 
 function timerControl() {
