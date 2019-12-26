@@ -1,0 +1,55 @@
+html{
+    background-color: black;
+}
+
+.container{
+    width: 1500px;
+    height: 900px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: purple;
+}
+
+#descr{
+    text-align: center;
+}
+
+#welcome{
+    -webkit-animation: flicker .2s infinite;
+    text-align:center;
+    font-family:'Lato', sans-serif;
+    font-size:3em;
+}
+
+#startGame{
+    -webkit-animation: flicker 2s infinite;
+    border: 2px solid yellow;
+    background-color: transparent;
+    margin-top: 10%;
+    position: absolute;
+    margin-left: 45%;
+    font-size: 40px;
+}
+
+#startGame:hover{
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+@-webkit-keyframes flicker
+{
+    0% {opacity:0;}
+    9% {opacity:0;}
+    10% {opacity:.5;}
+    13% {opacity:0;}
+    20% {opacity:.5;}
+    25% {opacity:1;}
+}
+
+#timer{
+    text-align: center;
+    font-size: 50px;
+    background-color: red;
+}
