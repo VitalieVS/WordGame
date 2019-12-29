@@ -51,5 +51,10 @@ html{
 #timer{
     text-align: center;
     font-size: 50px;
-    background-color: red;
+}
+
+.text-game{
+    position: absolute;
+    font-size: 40px;
+    left: 43%;
 }
