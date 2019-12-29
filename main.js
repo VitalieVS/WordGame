@@ -1,8 +1,16 @@
+let score = 0;
+
 document.getElementById("startGame").addEventListener("click", startTheGame);
 
 function startTheGame() {
     getFieldToClear();
     timerStart();
+    showInput();
+}
+
+function showInput() {
+    let input = document.getElementById("text-game-input");
+    input.style.display = 'block';
 }
 
 function getFieldToClear() {
@@ -18,12 +26,12 @@ function clearField(div, description, startG) {
     startG.parentNode.removeChild(startG);
 }
 
-function timerStart(){
+function timerStart() {
     let time = 0;
     let startTimer = setInterval(function () {
         time += 1;
         textModify(time);
-        if (time > 3){
+        if (time >= 3) {
             clearInterval(startTimer);
             timerControl();
             startText();
@@ -31,7 +39,7 @@ function timerStart(){
     }, 1000)
 }
 
-function textModify(time){
+function textModify(time) {
     let timer = document.getElementById("timer");
     timer.innerHTML = "Start in... " + time + " seconds";
 }
@@ -45,7 +53,7 @@ function getTimerData() {
     deleteTimer(timer);
 }
 
-function deleteTimer(timer){
+function deleteTimer(timer) {
     timer.parentNode.removeChild(timer);
 }
 
@@ -55,32 +63,46 @@ function startText() {
 }
 
 function createText() {
-    let text = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    let text = Math.random().toString(36).substring(2, 10) + Math.random().toString(36).substring(2, 10);
     addNewDiv(text)
 }
 
-function addNewDiv(text){
+function addNewDiv(text) {
     let textDiv = document.createElement("div");
     textDiv.className = 'text-game';
     textDiv.innerHTML = text;
     document.getElementById('contain').appendChild(textDiv);
 }
 
-function moveText(){
+function moveText() {
     let text = document.getElementsByClassName("text-game");
-    let time = setInterval(frame, 10); //this one will come random
+    let time = setInterval(frame, 13); //this one will come random
     let pos = 0;
-    function frame(){
-        if (pos === 600){
+    function frame() {
+        if (pos === 600) {
+            checkInput(text[0]);
             destroyText(text[0]);
             clearInterval(time);
-        } else{
+        } else {
             pos++;
             text[0].style.top = pos + 'px';
         }
     }
 }
 
-function destroyText(text){
+function destroyText(text) {
     text.parentNode.removeChild(text);
+}
+
+function checkInput(textToCheck){
+    let s = textToCheck.innerHTML;
+    let toCheck = document.getElementById("text-game-input").value;
+    if (s === toCheck){
+        console.log(score++);
+        createText();
+        document.getElementById("text-game-input").value = '';
+        moveText();
+    } else{
+        console.log('false');
+    }
 }

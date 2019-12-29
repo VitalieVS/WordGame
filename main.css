@@ -1,8 +1,8 @@
-html{
+html {
     background-color: black;
 }
 
-.container{
+.container {
     width: 1500px;
     height: 900px;
     position: relative;
@@ -11,18 +11,18 @@ html{
     background-color: purple;
 }
 
-#descr{
+#descr {
     text-align: center;
 }
 
-#welcome{
+#welcome {
     -webkit-animation: flicker .2s infinite;
-    text-align:center;
-    font-family:'Lato', sans-serif;
-    font-size:3em;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    font-size: 3em;
 }
 
-#startGame{
+#startGame {
     -webkit-animation: flicker 2s infinite;
     border: 2px solid yellow;
     background-color: transparent;
@@ -32,29 +32,52 @@ html{
     font-size: 40px;
 }
 
-#startGame:hover{
+#startGame:hover {
     background-color: black;
     color: white;
     cursor: pointer;
 }
 
-@-webkit-keyframes flicker
-{
-    0% {opacity:0;}
-    9% {opacity:0;}
-    10% {opacity:.5;}
-    13% {opacity:0;}
-    20% {opacity:.5;}
-    25% {opacity:1;}
+@-webkit-keyframes flicker {
+    0% {
+        opacity: 0;
+    }
+    9% {
+        opacity: 0;
+    }
+    10% {
+        opacity: .5;
+    }
+    13% {
+        opacity: 0;
+    }
+    20% {
+        opacity: .5;
+    }
+    25% {
+        opacity: 1;
+    }
 }
 
-#timer{
+#timer {
     text-align: center;
     font-size: 50px;
 }
 
-.text-game{
+.text-game {
     position: absolute;
     font-size: 40px;
     left: 43%;
+}
+
+#text-game-input {
+    display: none;
+    width: 300px;
+    height: 70px;
+    position: absolute;
+    bottom: 0px;
+    right: 25%;
+    left: 50%;
+    margin-left: -150px;
+    text-align: center;
 }
