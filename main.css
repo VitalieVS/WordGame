@@ -81,3 +81,14 @@ html {
     margin-left: -150px;
     text-align: center;
 }
+
+#score{
+    font-size: 30px;
+    display: none;
+}
+
+#messageBox{
+    font-size: 45px;
+    color: red;
+
+}

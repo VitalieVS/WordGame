@@ -1,8 +1,14 @@
 let score = 0;
-
+let tick = new Audio('sounds/hit.mp3');
+let holy = new Audio('sounds/holy.mp3');
+let domina = new Audio('sounds/domin.mp3');
+let godlike = new Audio('sounds/godlike.mp3');
+let unstop = new Audio('sounds/unstop.mp3');
+let wicked = new Audio('sounds/wicked.mp3');
 document.getElementById("startGame").addEventListener("click", startTheGame);
 
 function startTheGame() {
+    hideScore();
     getFieldToClear();
     timerStart();
     showInput();
@@ -63,7 +69,7 @@ function startText() {
 }
 
 function createText() {
-    let text = Math.random().toString(36).substring(2, 10) + Math.random().toString(36).substring(2, 10);
+    let text = Math.random().toString(36).substring(2, 6) + Math.random().toString(36).substring(2, 6);
     addNewDiv(text)
 }
 
@@ -76,7 +82,7 @@ function addNewDiv(text) {
 
 function moveText() {
     let text = document.getElementsByClassName("text-game");
-    let time = setInterval(frame, 13); //this one will come random
+    let time = setInterval(frame, 15); //this one will come random
     let pos = 0;
     function frame() {
         if (pos === 600) {
@@ -98,11 +104,49 @@ function checkInput(textToCheck){
     let s = textToCheck.innerHTML;
     let toCheck = document.getElementById("text-game-input").value;
     if (s === toCheck){
-        console.log(score++);
+        displayScore();
+        checkScore();
         createText();
         document.getElementById("text-game-input").value = '';
         moveText();
     } else{
         console.log('false');
+    }
+}
+
+function displayScore(){
+    tick.play();
+    score++;
+    document.getElementById("score").innerHTML = "Score:" + score;
+}
+
+function hideScore(){
+    document.getElementById("score").style.display = "block";
+}
+
+function checkScore(){
+    if (score > 5 && score < 7){
+        document.getElementById("messageBox").innerHTML = "Dominating";
+        domina.play();
+    }
+
+    if (score > 7 && score < 13){
+        document.getElementById("messageBox").innerHTML = "Unstoppable";
+        unstop.play();
+    }
+
+    if (score > 13 && score < 17){
+        document.getElementById("messageBox").innerHTML = "Wicked sick!";
+        wicked.play();
+    }
+
+    if (score > 17 && score < 21){
+        document.getElementById("messageBox").innerHTML = "Godlike!";
+        godlike.play();
+    }
+
+    if (score > 25 && score < 27){
+        document.getElementById("messageBox").innerHTML = "Hooooly shiiit!";
+        holy.play();
     }
 }
